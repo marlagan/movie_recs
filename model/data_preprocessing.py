@@ -4,14 +4,14 @@ import nltk
 import pandas as pd
 import numpy as np
 import os
-from torch.utils.data import DataLoader
+from torch.utils.data import random_split, DataLoader, Dataset
 from nltk import word_tokenize
 from nltk.corpus import stopwords
 import string
 from nltk.stem import WordNetLemmatizer
-import json
+import math
 
-#collaborative filtering recommendation system using pytorch
+#content-based filtering recommendation system using pytorch
 
 #for tokenization
 nltk.download('punkt_tab')
@@ -40,21 +40,11 @@ users.dropna(inplace=True)
 
 print(f"All columns in movies dataset: \n {list(movies.columns)}")
 
-print(f"All columns in ratings dataset:\n {list(ratings.columns)}")
-
-print(f"All columns in users dataset: \n {list(users.columns)}")
-
-
 print(f"The first ten rows in the movie dataset: \n {movies.head()}")
-
-print(f"The first ten rows in the ratings dataset: \n {ratings.head()}")
-
-print(f"The first ten rows in the users dataset: \n {users.head()}")
 
 
 def processing_text_data(data, lemmanization=True, stopwords=True, lowercasing=True, punctuation=True):
     '''
-
     :param data: the data we want to process
     :param lemmanization: boiling down the word to its root
     :param stopwords: words that are not that important
@@ -138,6 +128,39 @@ print(f'Release year: {movies_release_year[0]}')
 print(f'Runtime: {movies_runtime[0]}')
 print(f'Vote average: {movies_vote_avg[0]}')
 
+#Changing the categorical values into numerical values
+
+vocab = {}
+
+def assigning_indices(dataset, dictionary):
+    '''
+    :param dataset: the data we want to turn into indices
+    :param dictionary: the dictionary containing indices assigned to words
+    :return: indices assigned to words
+    '''
+    dataset_indices = deepcopy(dataset)
+    for x in range(len(dataset)):
+        for y in range(len(dataset[x])):
+
+            vocab_values = dictionary.values()
+
+            if vocab.get(dataset[x][y]):
+                dataset_indices[x][y] = vocab.get(dataset[x][y])
+            else:
+                if len(vocab_values) > 0:
+                    dictionary[dataset[x][y]] = max(vocab_values) + 1
+                    dataset_indices[x][y] = vocab.get(dataset[x][y])
+                else:
+                    dictionary[dataset[x][y]] = 1
+                    dataset_indices[x][y] = vocab.get(dataset[x][y])
+
+    return dataset_indices
+
+movies_title = assigning_indices(movies_title, vocab)
+movies_org_language= assigning_indices(movies_org_language, vocab)
+movies_desc = assigning_indices(movies_desc, vocab)
+
+
 #combinig all movies' processed features into one dataset
 
 movie_dataset = pd.DataFrame({
@@ -153,24 +176,34 @@ movie_dataset = pd.DataFrame({
 
 print(movie_dataset.head())
 
-#creating custom DataSet
+#Creating custom DataSet
 
-class MoviesDataSet():
-    def __init__(self, movies, users, ratings, transform=True):
-        self.movies = movies
-        self.users = users
-        self.ratings = ratings
-        self.transform = transform
+class MoviesDataSet(Dataset):
+    def __init__(self, dataset, transform=True):
+
+        self.X = dataset[['description', 'org_language', 'release_date', 'runtime', 'vote_average']]
+        self.y = dataset['title']
 
     def __len__(self):
-        return len(self.movies)
+        return len(self.X)
 
     def __getitem__(self, idx):
 
-        movie_item = self.movies.iloc[idx]
-        user_item = self.users.iloc[idx]
-        rating = self.ratings.iloc[idx]
+        x_item = self.X[idx]
+        y_item = self.y[idx]
 
-        return movie_item, user_item, rating
+        return x_item, y_item
 
+
+dataset = MoviesDataSet(movie_dataset)
+
+train_ds_size = math.floor(0.80 * len(dataset))
+test_ds_size = len(dataset) - train_ds_size
+
+train_dataset, test_dataset = random_split(dataset, [train_ds_size, test_ds_size])
+
+loaders = {
+    'train': DataLoader(train_dataset, batch_size=64, shuffle=True),
+    'test': DataLoader(test_dataset, batch_size=64, shuffle=True)
+}
 
