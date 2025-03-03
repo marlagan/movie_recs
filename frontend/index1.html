@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Movie recommendation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <div class="contents_one">
+
+        <div id="slider" class="slider">
+
+            <div class="slides">
+                <div class="text_one">
+                    <h1>{{ titles[0] }}</h1>
+                    <p class="genre" > Genres: </p>
+                    <p class="genre_name1" > {{ genres[0] }} </p>
+                    <p class="description"> Description: </p>
+                    <h2> {{ descriptions[0] }} </h2>
+                    <p class="date_of_release"> Date of release: </p>
+                    <h2> {{ date_of_release[0] }}</h2>
+                </div>
+            </div>
+            <div class="slides">
+                <div class="text_two">
+                    <h1>{{ titles[1] }}</h1>
+                    <p class="genre" > Genres: </p>
+                    <p class="genre_name2" > {{ genres[1] }} </p>
+                    <p class="description"> Description: </p>
+                    <h2> {{ descriptions[1] }} </h2>
+                    <p class="date_of_release"> Date of release: </p>
+                    <h2>{{ date_of_release[1] }}</h2>
+                </div>
+            </div>
+
+            <div class="slides">
+                <div class="text_three">
+                    <h1>{{ titles[2] }}</h1>
+                    <p class="genre" > Genres: </p>
+                    <p class="genre_name3" > {{ genres[2] }} </p>
+                    <p class="description"> Description: </p>
+                    <h2> {{ descriptions[2] }} </h2>
+                    <p class="date_of_release"> Date of release: </p>
+                    <h2>{{ date_of_release[2] }}</h2>
+                </div>
+             </div>
+
+             <div class="slides">
+                <div class="text_four">
+                    <h1>{{ titles[3] }}</h1>
+                    <p class="genre" > Genres: </p>
+                    <p class="genre_name4" > {{ genres[3] }} </p>
+                    <p class="description"> Description: </p>
+                    <h2> {{ descriptions[3] }} </h2>
+                    <p class="date_of_release"> Date of release: </p>
+                    <h2>{{ date_of_release[3] }}</h2>
+                </div>
+            </div>
+
+              <div class="slides">
+                <div class="text_five">
+                    <h1>{{ titles[4] }}</h1>
+                    <p class="genre" > Genres: </p>
+                    <p class="genre_name5" > {{ genres[4] }} </p>
+                    <p class="description"> Description: </p>
+                    <h2> {{ descriptions[4] }} </h2>
+                    <p class="date_of_release"> Date of release: </p>
+                    <h2>{{ date_of_release[4] }}</h2>
+                </div>
+            </div>
+ 
+            <div class="buttons" id="buttons">
+
+                <button class="previous" id="previous" onclick="changeIndex(-1)">&#10094;</button>
+                <button class="next" id="next" onclick="changeIndex(1)" >&#10095; </button>
+
+            </div>
+
+            <div class="dots" id="dots">
+
+                <div class="dot" onclick="currentDot(0)"></div>
+                <div class="dot" onclick="currentDot(1)"></div>
+                <div class="dot" onclick="currentDot(2)"></div>
+                <div class="dot" onclick="currentDot(3)"></div>
+                <div class="dot" onclick="currentDot(4)"></div>
+
+            </div>
+        </div>
+    </div>
+
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

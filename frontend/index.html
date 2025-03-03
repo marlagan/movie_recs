@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Movie recommendation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="contents">
+
+        <div class="vertical_line"></div>
+        <div class="text">
+            <div class="title">
+                <h1>Discover</h1>
+                <h1>New</h1>
+                <h1>Movies</h1>
+            </div>
+        </div>
+
+        <div class="interaction">
+
+            <div class="intro">
+                <h1>Give us the title</h1>
+                <h2>and we will choose movies just for you!</h2>
+            </div>
+            <div class="input">
+                <input type="text" class="input_user"  id="input_user" placeholder="Type the movie's name...">
+                <ul id="results" class="results"></ul>
+            </div>
+
+        </div>
+
+    </div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

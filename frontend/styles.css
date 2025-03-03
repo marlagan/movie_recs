@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=DM+Serif+Text:ital@0;1&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+
+    background-color: #161a1d;
+}
+
+.contents{
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    margin-top: 110px;
+    padding-top: 150px;
+    padding-bottom: 150px;
+    background-color: #f5f3f4; 
+}
+
+.title {
+    margin-left: 10px;
+    color: #ba181b;
+    font-family: 'Alfa Slab One';
+    margin-top: 60px;
+    font-weight: 300;
+
+  }
+
+.vertical_line {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 3px;
+    background-color: #161a1d;
+    height: 155px;
+    margin-top: 45px;
+}
+
+.title h1{
+    margin: 0;
+}
+
+.interaction{
+
+    margin-left: 80px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #e5383b;
+    width: 500px;
+    height: 250px;
+    gap: 40px;
+    
+}
+.intro{
+    gap: 5px;
+    margin-left: 20px;
+}
+
+.intro h1{
+    font-family: 'Times New Roman', Times, serif;
+    color: #161a1d;
+    font-weight: bold;
+    font-size: 40px;
+    margin: 0;
+}
+
+.intro h2{
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    
+}
+
+.input{
+    position: relative;
+}
+
+.input_user{
+    margin-left: 20px;
+    border: 0px;
+    border-radius: 20px;
+    width: 400px;
+}
+
+
+.input_user[type="text"]:focus {
+    outline: none;   
+    border: none;     
+}
+.contents_one{
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    margin-top: 200px;
+    background-color: #f5f3f4; 
+}
+
+.slider{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    gap: 40px;
+    margin-left: 450px;
+    margin-right: 450px;
+    margin-top: 50px;
+}
+
+.slides {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
+
+.text_one {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.slides img {
+   height: 300px;
+}
+
+.slides h1{
+    font-family: 'Alfa Slab One';
+    font-weight: 300;
+    font-size: 30px;
+    color: #ba181b;
+    background-color: #161a1d;
+    border-radius: 10px;
+    margin-left: 2px;
+    width: 400px;
+}
+
+.slides h2 {
+    font-family: 'Times New Roman';
+    font-size: 17px;
+}
+
+.buttons{
+    display: flex;
+    gap: 1000px;
+}
+
+.dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+}
+.dots *{
+    height: 15px;
+    width: 15px;
+    background-color: #717171;
+    border-radius: 20px;
+    margin-bottom: 10px;
+
+}
+.results{
+    margin: 0px;
+    position: absolute;
+    overflow-y: auto;
+}
+.results li{
+    background-color: #f5f3f4;
+    position: relative;
+    width: 380px;
+}
+
+.results{
+    list-style-type: none;
+    border: #161a1d 2px;
+}
+
+.genre{
+    color: #ba181b;
+    font-weight: bold;
+    font-family: 'Alfa Slab One';
+    margin: 0px;
+}
+
+.date_of_release{
+    color: #ba181b;
+    font-weight: bold;
+    font-family: 'Alfa Slab One';
+    margin: 0px;
+}
+
+.description {
+    color: #ba181b;
+    font-weight: bold;
+    font-family: 'Alfa Slab One';
+    margin: 0px;
+}
