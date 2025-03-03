@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, render_template, redirect, url_for
-from movie_recs.model.interaction_with_gui import get_content, get_full_titles, movie_recommendation
+from movie_recs.recommendation_system.interaction_with_gui import get_content, get_full_titles, movie_recommendation
 
 app = Flask(__name__,  template_folder='../frontend', static_folder='../frontend')
 

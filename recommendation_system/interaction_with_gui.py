@@ -1,4 +1,4 @@
-import movie_recs.model.data_preprocessing as dp
+import movie_recs.recommendation_system.data_preprocessing as dp
 from copy import deepcopy
 import numpy as np
 
