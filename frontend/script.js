@@ -62,13 +62,15 @@ function changeIndex(value) {
 function changeSlide(y) {
 
     let slides = document.getElementsByClassName("slides");
+    let dots = document.getElementsByClassName("dots");
     const slides_size = slides.length;
 
     for (let i = 0; i < slides_size; i++) {
         slides[i].style.display = "none";
-    }
 
+    }
     slides[y].style.display = "flex";
+
 }
 
 /**
